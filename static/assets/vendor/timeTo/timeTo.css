@@ -1,0 +1,142 @@
+figure, figcaption {
+	display: block;
+}
+
+#date-str {
+    display: none;
+}
+
+.transition {
+    -webkit-transition: top 400ms linear;
+    -moz-transition: top 400ms linear;
+    -ms-transition: top 400ms linear;
+    -o-transition: top 400ms linear;
+    transition: top 400ms linear;
+}
+
+.timeTo {
+    direction: ltr;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, auto));
+    font-family: "iransans", Verdana, Aial, sans-serif;
+    font-size: 28px;
+    line-height: 108%;
+    font-weight: bold;
+}
+
+.timeTo span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 104px;
+    color: #c96;
+    vertical-align: middle;
+    padding: 0 0.5rem;
+    margin: 0 1rem;
+}
+
+.timeTo.timeTo-white div {
+    display: inline-flex;
+    justify-content: center;
+    margin: 0 .25rem !important;
+    font-size: 60px;
+    font-weight: 700;
+	color: #c96;
+    background: #f8f8f8;
+    line-height: 104px;
+    border-radius: 8px;
+}
+
+.timeTo.timeTo-black div {
+	color: white;
+    background: #45484d; /* Old browsers */
+    background: -moz-linear-gradient(top, #45484d 0%, #000000 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#45484d), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #45484d 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #45484d 0%,#000000 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #45484d 0%,#000000 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #45484d 0%,#000000 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+.timeTo.timeTo-black .timeTo-alert {
+    background: #a74444; /* Old browsers */
+    background: -moz-linear-gradient(top, #a74444 0%, #3f0000 67%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a74444), color-stop(67%,#3f0000)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #a74444 0%,#3f0000 67%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #a74444 0%,#3f0000 67%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #a74444 0%,#3f0000 67%); /* IE10+ */
+    background: linear-gradient(to bottom, #a74444 0%,#3f0000 67%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a74444', endColorstr='#3f0000',GradientType=0 ); /* IE6-9 */
+}
+
+.timeTo.timeTo-white .timeTo-alert {
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 35%, #e17373 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(35%,#ffffff), color-stop(100%,#e17373)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffffff 35%,#e17373 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffffff 35%,#e17373 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffffff 35%,#e17373 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #ffffff 35%,#e17373 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e17373',GradientType=0 ); /* IE6-9 */
+}
+
+.timeTo figure {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+.timeTo figcaption {
+	text-align: center;
+	font-size: 1.5rem !important;
+	line-height: 2.15;
+	font-weight: 600;
+	color: #777;
+    margin-top: .5rem;
+}
+
+.timeTo div {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.timeTo ul {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    text-align: center;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+    position: absolute;
+}
+
+.timeTo ul li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+
+@media screen and (max-width: 1023px) {
+    .timeTo {
+        grid-template-columns: repeat(3, minmax(0, auto));
+    }
+
+    .timeTo span:nth-child(4) {
+        display: none;
+    }
+
+    .timeTo.timeTo-white div {
+        font-size: 40px;
+    }
+
+    .timeTo figcaption {
+        margin-top: 0;
+        margin-bottom: 2rem;
+        line-height: 1;
+    }
+}

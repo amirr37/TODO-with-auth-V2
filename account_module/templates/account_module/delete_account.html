@@ -1,0 +1,21 @@
+{% extends 'shared/_layout.html' %}
+{% block title %}
+    delete account
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="card text-center mx-auto mt-5" style="max-width: 400px;">
+            <div class="card-header bg-danger text-white">
+                <h1 class="card-title">Delete Account</h1>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Are you sure you want to delete your account?</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete Account</button>
+                    <a href="{% url 'profile' %}" class="btn btn-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

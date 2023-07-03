@@ -1,0 +1,76 @@
+{% extends 'shared/_layout.html' %}
+{% block title %}
+    Create Task
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <div class="card" style="background-color: #f5f5f5;">
+                <div class="card-body">
+                    <h1 class="card-title">Create Task</h1>
+                    <form method="POST" action="{% url 'task-create' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_title">Title:</label>
+                            {{ form.title }}
+                            {% if form.title.errors %}
+                                <ul class="errorlist">
+                                    {% for error in form.title.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_description">Description:</label>
+                            {{ form.description }}
+                            {% if form.description.errors %}
+                                <ul class="errorlist">
+                                    {% for error in form.description.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_priority">Priority:</label>
+                            {{ form.priority }}
+                            {% if form.priority.errors %}
+                                <ul class="errorlist">
+                                    {% for error in form.priority.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_completed">Completed:</label>
+                            {{ form.completed }}
+                            {% if form.completed.errors %}
+                                <ul class="errorlist">
+                                    {% for error in form.completed.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_due_date">Due Date:</label>
+                            {{ form.due_date }}
+                            {% if form.due_date.errors %}
+                                <ul class="errorlist">
+                                    {% for error in form.due_date.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Task</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

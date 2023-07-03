@@ -1,0 +1,25 @@
+{% load render_partial %}
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% endblock %}</title>
+    {% include 'references/header_references.html' %}
+</head>
+<body>
+<div class="page-wrapper">
+
+    {% if not login_form and not signup_form %}
+        {% render_partial 'task_module.views.PartialHeaderView' %}
+    {% endif %}
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main><!-- End .main -->
+</div><!-- End .page-wrapper -->
+<button id="scroll-top" title="بازگشت به بالا"><i class="icon-arrow-up"></i></button>
+<!-- Plugins JS File -->
+{% include 'references/js_references.html' %}
+</body>
+</html>

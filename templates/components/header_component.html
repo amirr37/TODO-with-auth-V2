@@ -1,0 +1,174 @@
+<header class="header header-12">
+    <div class="header-middle">
+        <div class="container">
+            <div class="header-left">
+                <button class="mobile-menu-toggler">
+                    <span class="sr-only">فهرست</span>
+                    <i class="icon-bars"></i>
+                </button>
+
+
+            </div><!-- End .header-left -->
+
+            <div class="header-right">
+                <div class="header-search header-search-extended header-search-visible header-search-no-radius">
+                    <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+
+                    <form action="#" method="get">
+                        <div class="header-search-wrapper search-wrapper-wide">
+                            <label for="q" class="sr-only">search</label>
+                            <input type="search" class="form-control" name="q" id="q"
+                                   placeholder="search task" required>
+
+                            <div class="select-custom">
+                                <select id="cat" name="cat">
+                                    <option value="">همه دسته ها</option>
+                                    <option value="1">مد</option>
+                                    <option value="2">- زنانه</option>
+                                    <option value="3">- مردانه</option>
+                                    <option value="5">- مد کودکان</option>
+                                    <option value="6">الکترونیک</option>
+                                    <option value="7">- تلویزیون</option>
+                                    <option value="8">- دوربین ها</option>
+                                    <option value="9">- بازی ها</option>
+                                </select>
+                            </div><!-- End .select-custom -->
+                            <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                        </div><!-- End .header-search-wrapper -->
+                    </form>
+
+                </div><!-- End .header-search -->
+
+                <div class="header-dropdown-link">
+                    <div class="account">
+                        <a href="{% url 'profile' %}" title="پروفایل من">
+                            <div class="icon">
+                                <i class="icon-user"></i>
+                            </div>
+                            <p>My Profile</p>
+                        </a>
+                    </div>
+
+
+                    <!-- End .compare-dropdown -->
+
+
+                    <div class="dropdown cart-dropdown">
+
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-cart-products">
+                                <div class="product">
+                                    <div class="product-cart-details">
+                                        <h4 class="product-title">
+                                            <a href="product.html">کتونی ورزشی مخصوص دویدن رنگ بژ</a>
+                                        </h4>
+
+                                        <span class="cart-product-info">
+                                                    <span class="cart-product-qty">1 x </span>
+                                                    84,000 تومان
+                                                </span>
+                                    </div><!-- End .product-cart-details -->
+
+                                    <figure class="product-image-container">
+                                        <a href="product.html" class="product-image">
+                                            <img src="/static/assets/images/products/cart/product-1.jpg"
+                                                 alt="محصول">
+                                        </a>
+                                    </figure>
+                                    <a href="#" class="btn-remove" title="حذف محصول"><i
+                                            class="icon-close"></i></a>
+                                </div><!-- End .product -->
+
+                                <div class="product">
+                                    <div class="product-cart-details">
+                                        <h4 class="product-title">
+                                            <a href="product.html">لباس زنانه آبی</a>
+                                        </h4>
+
+                                        <span class="cart-product-info">
+                                                    <span class="cart-product-qty">1 x </span>
+                                                    76,000 تومان
+                                                </span>
+                                    </div><!-- End .product-cart-details -->
+
+                                    <figure class="product-image-container">
+                                        <a href="product.html" class="product-image">
+                                            <img src="/static/assets/images/products/cart/product-2.jpg"
+                                                 alt="محصول">
+                                        </a>
+                                    </figure>
+                                    <a href="#" class="btn-remove" title="حذف محصول"><i
+                                            class="icon-close"></i></a>
+                                </div><!-- End .product -->
+                            </div><!-- End .cart-product -->
+
+                            <div class="dropdown-cart-total">
+                                <span>مجموع</span>
+
+                                <span class="cart-total-price">160,000 تومان</span>
+                            </div><!-- End .dropdown-cart-total -->
+
+                            <div class="dropdown-cart-action">
+                                <a href="cart.html" class="btn btn-primary">مشاهده سبد خرید</a>
+                                <a href="checkout.html" class="btn btn-outline-primary-2"><span>پرداخت</span><i
+                                        class="icon-long-arrow-left"></i></a>
+                            </div><!-- End .dropdown-cart-total -->
+                        </div>
+                    </div><!-- End .cart-dropdown -->
+                </div>
+            </div><!-- End .header-right -->
+        </div><!-- End .container -->
+    </div><!-- End .header-middle -->
+
+    <div class="header-bottom sticky-header">
+        <div class="container">
+            <div style="background-color: #333; display: flex; width: 100%;">
+                <div class="header-left">
+                    <div class="dropdown category-dropdown">
+
+                    </div><!-- End .category-dropdown -->
+                </div><!-- End .header-left -->
+
+                <div class="header-center">
+
+                    <nav class="main-nav">
+                        <ul class="menu sf-arrows">
+
+                            <li>
+                                <a href="{% url 'index_page' %}" class="sf-with-ul">Home</a>
+                            </li>
+                            <li>
+                                <a href="category.html" class="sf-with-ul">Today's tasks</a>
+                            </li>
+                            <li>
+                                <a href="product.html" class="sf-with-ul"> A Priority</a>
+                            </li>
+                            <li>
+                                <a href="#" class="sf-with-ul">Categories </a>
+                                <ul>
+                                    {% for category in categories %}
+                                        <li><a href="login.html">{{ category.title }}</a></li>
+
+                                    {% endfor %}
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{% url 'task-create' %}" class="sf-with-ul">Add Task</a>
+                            </li>
+                            <li>
+                                <a href="index-1.html" class="sf-with-ul">API</a>
+                            </li>
+
+                        </ul><!-- End .menu -->
+                    </nav><!-- End .main-nav -->
+                </div>
+                <a href="{% url 'logout' %}">
+                    <div class="header-right">
+                        <p><span>logout</span></p>
+                    </div>
+                </a><!-- End .header-right -->
+            </div>
+        </div><!-- End .container -->
+    </div><!-- End .header-bottom -->
+</header><!-- End .header -->

@@ -1,0 +1,63 @@
+{% extends 'shared/_layout.html' %}
+{% block title %}
+signup
+{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh; background-color: #f9f9f9;">
+    <form method="post" class="p-4 rounded-lg shadow bg-light" style="max-width: 400px;">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="{{ signup_form.username.id_for_label }}">{{ signup_form.username.label }}</label>
+            {{ signup_form.username }}
+            {% if signup_form.username.errors %}
+                <ul class="errorlist">
+                    {% for error in signup_form.username.errors %}
+                        <li class="text-danger">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ signup_form.email.id_for_label }}">{{ signup_form.email.label }}</label>
+            {{ signup_form.email }}
+            {% if signup_form.email.errors %}
+                <ul class="errorlist">
+                    {% for error in signup_form.email.errors %}
+                        <li class="text-danger">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ signup_form.password1.id_for_label }}">{{ signup_form.password1.label }}</label>
+            {{ signup_form.password1 }}
+            {% if signup_form.password1.errors %}
+                <ul class="errorlist">
+                    {% for error in signup_form.password1.errors %}
+                        <li class="text-danger">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ signup_form.password2.id_for_label }}">{{ signup_form.password2.label }}</label>
+            {{ signup_form.password2 }}
+            {% if signup_form.password2.errors %}
+                <ul class="errorlist">
+                    {% for error in signup_form.password2.errors %}
+                        <li class="text-danger">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
+        <p class="mt-3">Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+    </form>
+</div>
+
+{% endblock %}

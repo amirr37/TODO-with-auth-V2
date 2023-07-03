@@ -1,0 +1,37 @@
+{% extends 'shared/_layout.html' %}
+
+{% block title %}
+    {{ task.title }}
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="task-container" style="display: flex; justify-content: center; align-items: center; height: 50vh;">
+        <div class="task-details"
+             style="background-color: #f7f7f7; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); width: 400px;">
+            <h2 style="color: #333; font-size: 24px; margin-bottom: 10px;">{{ task.title }}</h2>
+            <p class="description" style="color: #777; font-size: 16px; margin-bottom: 15px;">{{ task.description }}</p>
+            <p class="category" style="margin-bottom: 10px;">Category: <span
+                    style="font-weight: bold;">{{ task.category }}</span></p>
+            <p class="priority" style="margin-bottom: 10px;">Priority: <span
+                    style="font-weight: bold;">{{ task.priority }}</span></p>
+            <p class="due-date" style="margin-bottom: 10px;">Due Date: <span
+                    style="font-weight: bold;">{{ task.due_date }}</span></p>
+            <p class="created-date" style="margin-bottom: 10px;">Created Date: <span
+                    style="font-weight: bold;">{{ task.created_at }}</span></p>
+            <p class="status" style="margin-bottom: 10px;">Status: <span
+                    class="{% if task.completed %}completed{% else %}pending{% endif %}"
+                    style="font-weight: bold; {% if task.completed %}color: green;{% else %}color: red;{% endif %}">{% if task.completed %}
+                Completed{% else %}Pending{% endif %}</span></p>
+            <a href="{% url 'task-update' task.id %}"
+               style="text-decoration: none; color: #fff; background-color: #007bff; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-top: 10px;">Edit
+                Task</a>
+            <a href="{% url 'task-delete' task.id %}"
+               style="text-decoration: none; color: #fff; background-color: #dc3545; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-top: 10px; margin-left: 10px;">Delete
+                Task</a>
+        </div>
+    </div>
+
+
+{% endblock %}

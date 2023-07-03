@@ -1,0 +1,23 @@
+{% extends 'shared/_layout.html' %}
+
+{% block title %}
+    {{ user_profile.username }}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="card text-center mx-auto mt-5" style="max-width: 400px;">
+            <div class="card-header bg-primary text-white" style="background-color: #004d99;">
+                <h1 class="card-title">User Profile</h1>
+            </div>
+            <div class="card-body">
+                <p class="card-text"><strong>Username:</strong> {{ user_profile.username }}</p>
+                <p class="card-text"><strong>Email:</strong> {{ user_profile.email }}</p>
+                <p class="card-text"><strong>First Name:</strong> {{ user_profile.first_name }}</p>
+                <p class="card-text"><strong>Last Name:</strong> {{ user_profile.last_name }}</p>
+                <p class="card-text"><strong>Age:</strong> {{ user_profile.age }}</p>
+                <a href="{% url 'delete_account' %}" class="btn btn-danger">Delete Account</a>
+                <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

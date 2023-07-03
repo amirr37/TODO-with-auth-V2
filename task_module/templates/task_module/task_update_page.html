@@ -1,0 +1,32 @@
+{% extends 'shared/_layout.html' %}
+{% block title %}
+    edit task
+{% endblock %}
+{% block content %}
+
+  <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1 class="text-center mb-4" style="color: #333;">Update Task</h1>
+      <form method="POST" action="{% url 'task-update' task.id %}">
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="form-group">
+            <label for="{{ field.id_for_label }}" style="font-weight: bold; color: #777;">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+              <ul class="text-danger" style="list-style: none; margin-top: 5px; padding-left: 0;">
+                {% for error in field.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary btn-block" style="padding: 8px 16px; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; margin-top: 20px; cursor: pointer;">Update Task</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'shared/_layout.html' %}
+
+{% block title %}
+    edit profile
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="card text-center mx-auto mt-5" style="max-width: 400px;">
+            <div class="card-header bg-primary text-white">
+                <h1 class="card-title">Edit Profile</h1>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_first_name">First Name:</label>
+                        <input type="text" name="first_name" id="id_first_name" class="form-control"
+                               value="{{ form.first_name.value }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_last_name">Last Name:</label>
+                        <input type="text" name="last_name" id="id_last_name" class="form-control"
+                               value="{{ form.last_name.value }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_age">Age:</label>
+                        <input type="number" name="age" id="id_age" class="form-control" value="{{ form.age.value }}">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <a href="{% url 'profile' %}" class="btn btn-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

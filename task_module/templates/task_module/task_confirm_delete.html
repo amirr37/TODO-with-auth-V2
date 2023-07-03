@@ -1,0 +1,21 @@
+{% extends 'shared/_layout.html' %}
+{% block title %}
+    edit task
+{% endblock %}
+
+{% block content %}
+  <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="text-center">
+        <h1 class="mb-4">Confirm Deletion</h1>
+        <p class="mb-4">Are you sure you want to delete the task '{{ object.title }}'?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger mr-2" style="width: 80px;">Delete</button>
+            <a href="{% url 'task-detail' task.id %}" class="btn btn-secondary" style="width: 80px;">Cancel</a>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
