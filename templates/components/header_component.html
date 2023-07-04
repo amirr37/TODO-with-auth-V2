@@ -138,16 +138,16 @@
                                 <a href="{% url 'index_page' %}" class="sf-with-ul">Home</a>
                             </li>
                             <li>
-                                <a href="category.html" class="sf-with-ul">Today's tasks</a>
+                                <a href="{% url 'today-task' %}" class="sf-with-ul">Today's tasks</a>
                             </li>
                             <li>
-                                <a href="product.html" class="sf-with-ul"> A Priority</a>
+                                <a href="{% url 'important-task' %}" class="sf-with-ul"> A Priority</a>
                             </li>
                             <li>
                                 <a href="#" class="sf-with-ul">Categories </a>
                                 <ul>
                                     {% for category in categories %}
-                                        <li><a href="login.html">{{ category.title }}</a></li>
+                                        <li><a href="{% url 'category' category.title %}">{{ category.title }}</a></li>
 
                                     {% endfor %}
 

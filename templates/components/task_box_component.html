@@ -1,0 +1,22 @@
+<div class="product">
+
+
+    <div class="product-body" style="text-align: center;display: inline;">
+        {% if task.category %}
+            <div class="product-cat" dir="ltr">
+                <a href="#">{{ task.category }}</a>
+            </div><!-- End .product-cat -->
+        {% endif %}
+
+        <h3 class="product-title"><a href="product.html">{{ task.title }}</a>
+        </h3><!-- End .product-title -->
+        <div class="product-price">
+            until : {{ task.due_date }}
+        </div><!-- End .product-price -->
+
+        <div class="product-action">
+            <a href="{% url 'task-detail' task.id %}" class="btn-product "><span>Task Detail</span></a>
+            <a href="#" class="btn-product btn-wishlist"><span>set as done</span></a>
+        </div><!-- End .product-action -->
+    </div><!-- End .product-body -->
+</div><!-- End .product -->

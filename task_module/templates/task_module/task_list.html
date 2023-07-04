@@ -1,0 +1,15 @@
+{% extends 'shared/_layout.html' %}
+{% block title %}
+    today tasks
+{% endblock %}
+
+{% block content %}
+    <h1>{% if category %}
+        {{ category.title }}
+    {% endif %} </h1>
+    {% for task in tasks %}
+        {% include 'components/task_box_component.html' %}
+    {% endfor %}
+{% endblock %}
+
+

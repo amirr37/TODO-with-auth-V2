@@ -1,6 +1,9 @@
+from datetime import date
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import ListView, TemplateView, DetailView, UpdateView, DeleteView, CreateView
 from .models import Task, Category
 from django.urls import reverse_lazy
@@ -70,3 +73,61 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         user = self.request.user
         form.instance.user = user if user else None
         return super(TaskCreateView, self).form_valid(form)
+
+
+class CategoryCreateView(LoginRequiredMixin, CreateView):
+    model = Category
+    fields = ['title']
+    template_name = 'task_module/category_create.html'
+    success_url = reverse_lazy('index_page')
+
+    def form_valid(self, form):
+        user = self.request.user
+        form.instance.user = user if user else None
+        return super(CategoryCreateView, self).form_valid(form)
+
+
+class TaskListTodayView(ListView):
+    model = Task
+    template_name = 'task_module/task_list.html'
+    context_object_name = 'tasks'
+    ordering = ['priority']
+    paginate_by = 10
+
+    def get_queryset(self):
+        user = self.request.user
+        today = date.today()
+        queryset = Task.objects.filter(due_date=today).filter(user=user)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['1_priority'] = Task.objects.filter(user=self.request.user).filter(priority__exact=1)
+        today = date.today()
+        today_tasks = self.get_queryset().filter(due_date=today)
+        context['today_tasks'] = today_tasks
+        all_tasks = Task.objects.all().filter(user=self.request.user)
+        context['all_tasks'] = all_tasks
+        return context
+
+
+class TaskListAPriorityView(ListView):
+    model = Task
+    template_name = 'task_module/task_list.html'
+    context_object_name = 'tasks'
+    ordering = ['priority']
+    paginate_by = 10
+
+    def get_queryset(self):
+        user = self.request.user
+        queryset = Task.objects.filter(priority__lt=4).filter(user=user)
+        return queryset
+
+
+class TaskCategoriesView(View):
+    def get(self, request, category):
+        context = {
+            'tasks': Task.objects.filter(user=self.request.user).filter(category__title=category),
+            'category': category
+        }
+        return render(request, 'task_module/task_list.html', context)
