@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # internal apps
     'task_module',
     'account_module',
+    'api_module',
 
     # external apps
     'rest_framework',
