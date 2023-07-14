@@ -1,15 +1,9 @@
 import rest_framework.status
 from django.test import TestCase, Client
-from django.test import TestCase, RequestFactory
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from account_module.models import CustomUser
-from account_module.views import SignupView
-from django.test import TestCase, Client
-from django.contrib.auth import get_user_model
-from django.urls import reverse
-from account_module.models import CustomUser
-from account_module.views import LoginView
+from account_module.views import LoginView, SignupView, LogoutView
 from account_module.forms import LoginForm
 
 
@@ -117,3 +111,38 @@ class LoginViewTest(TestCase):
         self.assertTemplateUsed(response, 'account_module/login.html')
         self.assertFalse(response.context['user'].is_authenticated)
         self.assertFormError(response, 'login_form', 'username', 'wrong username or password')
+
+
+# class LogoutViewTest(TestCase):
+#     def setUp(self):
+#         self.client = Client()
+#         self.login_url = reverse('login')
+#         self.username = 'testuser'
+#         self.password = 'testpassword'
+#         self.user = CustomUser.objects.create_user(username=self.username, password=self.password)
+#
+#     def test_logout_view(self):
+#         login_data =
+
+
+class LogoutViewTest(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.logout_url = reverse('logout')
+        self.login_url = reverse('login')
+        self.username = 'testuser'
+        self.password = 'testpassword'
+        self.email = 'test@test.com'
+        self.user = get_user_model().objects.create_user(username=self.username, password=self.password,
+                                                         email=self.email)
+
+    def test_logout_view(self):
+        # Log in the user
+        self.client.login(username=self.username, password=self.password)
+
+        # Make a GET request to the logout view
+        response = self.client.get(self.logout_url, follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'account_module/login.html')
+        self.assertFalse(response.context['user'].is_authenticated)
+        self.assertRedirects(response, self.login_url)
