@@ -63,15 +63,12 @@ class LoginView(View):
                 user_password = login_form.cleaned_data.get('password')
                 is_password_correct = user.check_password(user_password)
                 if is_password_correct:
-                    print("pass true")
                     login(request, user)
-                    print("logedin")
                     return redirect(reverse('index_page'))
                 else:
-                    print("wrong pass")
                     login_form.add_error('username', 'wrong username or password')
             else:
-                login_form.add_error('username', 'there is no user with this info')
+                login_form.add_error('username', 'wrong username or password')
 
         context = {'login_form': LoginForm}
         return render(request, 'account_module/login.html', context)
