@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'api_module',
 
     # external apps
-    'rest_framework',
+    # 'rest_framework',
     'django_render_partial',
 
 ]

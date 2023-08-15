@@ -1,0 +1,12 @@
+# Ignore virtual environment files
+venv/
+
+# Ignore IDE-specific files (e.g., for JetBrains IntelliJ IDEA)
+.idea/
+".idea/"
+
+
+# Ignore Python cache files
+__pycache__/
+
+
