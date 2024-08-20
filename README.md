@@ -22,7 +22,7 @@ Welcome to the TODO Web Application! This is a Django-based project that allows 
 - Edit tasks: Modify task details such as title, description, and due date.
 - Mark tasks as completed: Keep track of your progress by marking completed tasks.
 - Filter tasks: Filter tasks based on completion status or due date or priority to find what you need quickly.
-- RESTful APIs: Utilizes Django Rest Framework (DRF) for easy integration with external applications.
+- RESTful APIs: Utilizes Django Rest Framework (DRF) for easy integration with external applications.(not completed yet)
 
 ## Installation
 
